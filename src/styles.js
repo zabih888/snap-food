@@ -15,6 +15,7 @@ export const setColor = {
 };
 export const MediumSize = "(min-width:600px)";
 export const LargeSize = "(min-width:900px)";
+export const xLargeSize = "(min-width:1200px)";
 
 export const containerGlass = () => {
   return `background-color: rgba(255, 255, 255, 0.6);backdrop-filter: blur(2.5rem);`;

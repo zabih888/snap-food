@@ -73,7 +73,7 @@ const Item = styled.div`
 
   .name {
     position: absolute;
-    z-index: 100;
+    z-index: 10;
     bottom: 0;
     width: 100px;
     padding: 0.2rem 0;

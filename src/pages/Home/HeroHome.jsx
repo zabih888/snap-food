@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Container from "../../components/Global/Container";
@@ -6,29 +6,22 @@ import {
   SvgLoction,
   SvgLogin,
   SvgLogo,
-  SvgShop,
   SvgSreach,
 } from "../../components/Global/SvgWrapp";
 import {
-  containerGlass,
   flexAlign,
   flexBetween,
-  LargeSize,
   media,
   MediumSize,
   setColor,
 } from "../../styles";
 import heroImg from "../../assets/images/main/hero-image.png";
-import { menuData } from "../../data";
 import { useMediaQuery } from "@mui/material";
-
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import {
+  ButtonLogin,
+  ButtonShopLogin,
+} from "../../components/Global/Buttons/ButtonLogin";
+import MenuSlider from "../../components/Global/MenuSlider";
 
 const HeroHome = () => {
   const matchesMedium = useMediaQuery(MediumSize);
@@ -39,19 +32,8 @@ const HeroHome = () => {
         <div className="head">
           <SvgLogo />
           <div className="leftWrap">
-            {matchesMedium ? (
-              <Link to="/" className="loginShop">
-                <SvgShop />
-                ثبت نام فروشندگان
-              </Link>
-            ) : undefined}
-            {matchesMedium ? (
-              <ButtonLogin to="/">
-                ورود <span>یا</span> عضویت
-              </ButtonLogin>
-            ) : (
-              <SvgLogin />
-            )}
+            {matchesMedium ? <ButtonShopLogin /> : undefined}
+            {matchesMedium ? <ButtonLogin /> : <SvgLogin />}
           </div>
         </div>
 
@@ -69,28 +51,7 @@ const HeroHome = () => {
             <SvgSreach />
           </div>
         </div>
-
-        <div className="menu">
-          <Swiper
-            // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={50}
-            slidesPerView={matchesMedium ? 6 : 3}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-          >
-            {menuData.map((item) => (
-              <SwiperSlide>
-                <div className="item">
-                  <img src={item.image} />
-                  <p>{item.text}</p>
-                </div>
-              </SwiperSlide>
-            ))}
-            ...
-          </Swiper>
-        </div>
+        <MenuSlider />
       </Wrap>
     </Container>
   );
@@ -122,12 +83,6 @@ const Wrap = styled.div`
     padding: 2rem 0 4rem 0;
     .leftWrap {
       ${flexAlign}
-      .loginShop {
-        ${flexAlign}
-        margin-left: 1rem;
-        padding-right: 1.5rem;
-        color: ${setColor.blackMain};
-      }
     }
   }
 
@@ -173,37 +128,5 @@ const Wrap = styled.div`
         }
       }
     }
-  }
-
-  .menu {
-    text-align: center;
-    ${containerGlass}
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 3rem;
-    border-radius: 1.5rem;
-    .item {
-      padding: 1.5rem 0;
-      img {
-        width: 50px;
-        height: auto;
-      }
-
-      p {
-        font-size: small;
-      }
-    }
-  }
-`;
-const ButtonLogin = styled(Link)`
-  background-color: ${setColor.primaryMain};
-  color: ${setColor.whiteMain};
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 0.375rem;
-  padding: 0.75rem 0.5rem;
-
-  span {
-    font-weight: 400;
   }
 `;
