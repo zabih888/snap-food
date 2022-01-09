@@ -1,16 +1,16 @@
 import { useMediaQuery } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
-import { MediumSize } from "../../styles";
+import { LargeSize } from "../../styles";
 
 const Container = ({ bckColor, children, bottomRadius, spaceSection }) => {
-  const matchesMedium = useMediaQuery(MediumSize);
+  const matchesLarge = useMediaQuery(LargeSize);
   return (
     <Section
       style={{
         backgroundColor: bckColor,
-        borderBottomRightRadius: matchesMedium ? bottomRadius : undefined,
-        marginTop: spaceSection
+        borderBottomRightRadius: matchesLarge ? bottomRadius : undefined,
+        marginTop: spaceSection,
       }}
     >
       {children}

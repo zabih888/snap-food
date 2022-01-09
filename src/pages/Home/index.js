@@ -3,19 +3,16 @@ import AppHome from "./AppHome";
 import BusinessHome from "./BusinessHome";
 import CateqoryHome from "./CateqoryHome";
 import HeroHome from "./HeroHome";
-import Header from "../../components/Layout/Header";
 import Footer from "../../components/Layout/Footer";
-
+import HeaderShow from "../../components/Layout/HeaderShow";
 const Home = () => {
   return (
     <div>
-      <Header />
-      <div>
-        <HeroHome />
-        <CateqoryHome />
-        <AppHome />
-        <BusinessHome />
-      </div>
+      <HeaderShow />
+      <HeroHome />
+      <CateqoryHome />
+      <AppHome />
+      <BusinessHome />
       <Footer />
     </div>
   );

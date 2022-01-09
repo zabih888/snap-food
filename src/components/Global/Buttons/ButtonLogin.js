@@ -11,7 +11,7 @@ export const ButtonLogin = () => {
   );
 };
 const BtnLogin = styled(Link)`
-  background-color: ${setColor.primaryMain};
+  background-color: ${setColor.primaryLight};
   color: ${setColor.whiteMain};
   font-size: 1rem;
   font-weight: 600;

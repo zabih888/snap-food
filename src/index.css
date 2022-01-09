@@ -1,6 +1,20 @@
 @import url(./assets/fonts/font-face.css);
 
 body,
-input, button{
-  font-family: Vazir;
+input,
+button, * {
+  font-family: Vazir !important;
+}
+
+svg {
+  outline: none;
+}
+
+.containerXL {
+  max-width: 1600px;
+  margin: auto;
+}
+
+.inputSpace{
+  padding: .5rem 0 !important;
 }

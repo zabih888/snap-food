@@ -6,6 +6,7 @@ const Globals = createGlobalStyle`
      box-sizing: border-box;
      margin: 0;
      padding: 0;
+     outline: none;
  } 
 
  body{
@@ -19,6 +20,14 @@ const Globals = createGlobalStyle`
  }
  a{
      text-decoration: none;
+ }
+
+ .btn{
+     background-color: ${setColor.primaryLight} !important;
+     color: ${setColor.whiteMain} !important;
+     font-size: 16px !important;
+     font-weight: 600 !important;
+     border: 2px solid ${setColor.primaryLight} !important;
  }
 `;
 

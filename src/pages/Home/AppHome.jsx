@@ -1,18 +1,22 @@
 import React from "react";
 import Container from "../../components/Global/Container";
-import { flexBetween, LargeSize, media, setColor } from "../../styles";
+import { flexBetween, LargeSize, media, setColor, shadow } from "../../styles";
 import svgGoogplePlay from "../../assets/images/svg/GooglePlay.svg";
 import svgBazar from "../../assets/images/svg/Bazar.svg";
 import svgSeab from "../../assets/images/svg/Seab.svg";
 import svgIApps from "../../assets/images/svg/IApps.svg";
 import imgApp from "../../assets/images/main/img_app.png";
 import styled from "styled-components";
-import { useMediaQuery } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 
 const AppHome = () => {
   const matchesLarge = useMediaQuery(LargeSize);
   return (
-    <Container bckColor={setColor.containerDark} bottomRadius="7.5rem" spaceSection="8rem">
+    <Container
+      bckColor={setColor.containerDark}
+      bottomRadius="7.5rem"
+      spaceSection="8rem"
+    >
       <Wrap>
         <div className="right">
           <h1 className="title">اپلیکیشن اسنپ‌فود</h1>
@@ -26,7 +30,7 @@ const AppHome = () => {
           </p>
           <div className="inputWrap">
             <input placeholder="مثلا 09907030335" />
-            <button>دریافت لینک</button>
+            <Button className="btn">دریافت لینک</Button>
           </div>
           <div className="linksApp">
             <a
@@ -93,7 +97,10 @@ const Wrap = styled.div`
     `}
 
     .title {
+      font-size: 1.75rem;
+      ${media.large`
       font-size: 3rem;
+      `}
       font-weight: 500;
       margin: 2rem 0;
     }
@@ -117,6 +124,7 @@ const Wrap = styled.div`
         width: 100%;
         height: 3rem;
         border: none;
+        ${shadow};
         &::placeholder {
           padding-right: 0.5rem;
         }
@@ -126,13 +134,7 @@ const Wrap = styled.div`
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        border: none;
-        background-color: ${setColor.primaryMain};
-        color: ${setColor.whiteMain};
-        font-weight: 600;
-        font-size: 16px;
         padding: 0.25rem 0.75rem;
-        border-radius: 0.375rem;
         margin-left: 0.5rem;
       }
     }

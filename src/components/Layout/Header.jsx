@@ -7,6 +7,7 @@ import {
   LargeSize,
   media,
   setColor,
+  shadow,
 } from "../../styles";
 import { ButtonLogin, ButtonShopLogin } from "../Global/Buttons/ButtonLogin";
 import MenuSlider from "../Global/MenuSlider";
@@ -82,16 +83,18 @@ export default Header;
 // =======================================================================
 
 const HeaderWrap = styled.div`
- position: fixed;
- width: 100%;
- background-color: ${setColor.background};
- z-index: 20;
-`
+  position: fixed;
+  width: 100%;
+  background-color: ${setColor.background};
+  z-index: 20;
+  ${shadow}
+`;
+
 const Head = styled.header`
   ${flexBetween}
   padding: 1rem 1rem 0 1rem;
   ${media.large`
-  padding: 1rem 1rem 0 3rem;
+  padding: 1rem 3rem 0 3rem;
   `}
 
   .right {
@@ -136,6 +139,7 @@ const Head = styled.header`
       height: 2.75rem;
       border-radius: 0.375rem;
       border: none;
+      ${shadow};
 
       &::placeholder {
         letter-spacing: -1px;

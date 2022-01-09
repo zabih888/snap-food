@@ -9,7 +9,7 @@ import "swiper/css/scrollbar";
 import { menuData } from "../../data";
 import { useMediaQuery } from "@mui/material";
 import styled from "styled-components";
-import { containerGlass, LargeSize, xLargeSize } from "../../styles";
+import { containerGlass, xLargeSize } from "../../styles";
 
 const MenuSlider = () => {
   const matchesXLarge = useMediaQuery(xLargeSize);
@@ -49,7 +49,7 @@ const Menu = styled.div`
   .item {
     padding: 1.5rem 0;
     img {
-      width: 50px;
+      width: 40px;
       height: auto;
     }
 

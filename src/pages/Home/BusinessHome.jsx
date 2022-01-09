@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../components/Global/Container";
-import { media, setColor } from "../../styles";
+import { LargeSize, media, setColor } from "../../styles";
 import styled from "styled-components";
 import imgBusiness from "../../assets/images/main/vendor_pic.png";
+import { Button, useMediaQuery } from "@mui/material";
 
 const BusinessHome = () => {
+  const matchesLarge = useMediaQuery(LargeSize);
   return (
     <Container
       bckColor={setColor.containerLight}
@@ -17,7 +19,7 @@ const BusinessHome = () => {
           <h2 className="desc">
             با اسنپ فود کسب و کارتان را آنلاین کنید و فروشتان را افزایش دهید.
           </h2>
-          <button>
+          <Button fullWidth className="btn">
             <svg
               className="icon"
               viewBox="0 0 24 26"
@@ -32,11 +34,13 @@ const BusinessHome = () => {
               ></path>
             </svg>
             ثبت نام فروشندگان
-          </button>
+          </Button>
         </div>
-        <div className="left">
-          <img src={imgBusiness} />
-        </div>
+        {matchesLarge ? (
+          <div className="left">
+            <img src={imgBusiness} />
+          </div>
+        ) : undefined}
       </Wrap>
     </Container>
   );
@@ -48,11 +52,12 @@ export default BusinessHome;
 // =======================================================================
 const Wrap = styled.div`
   display: grid;
+  margin-bottom: 4rem;
   grid-template-columns: 1fr;
   padding: 0 1rem;
   ${media.large`
   grid-template-columns: 2fr 1fr;
-  padding: 0 3rem;
+  padding: 0 3rem 4rem 3rem;
   `}
 
   .left {
@@ -66,27 +71,25 @@ const Wrap = styled.div`
 
   .right {
     .title {
+      font-size: 1.75rem;
+      ${media.large`
       font-size: 2.5rem;
+      `}
       font-weight: 500;
       margin-top: 2rem;
-    }
+    } 
     .desc {
       font-weight: 400;
+      font-size: 1.2rem;
+      ${media.large`
       font-size: 1.5rem;
+      `}
       margin: 2rem 0 2rem 0;
     }
-
     button {
-      background-color: ${setColor.primaryMain};
-      color: ${setColor.whiteMain};
-      border: none;
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      font-size: 18px;
-      border-radius: 0.375rem;
-      padding: 0.75rem;
-
+      ${media.large`
+      width: auto;
+      `}
       .icon {
         margin-left: 0.75rem;
       }
