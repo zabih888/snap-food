@@ -9,6 +9,7 @@ import {
   SvgSreach,
 } from "../../components/Global/SvgWrapp";
 import {
+  containerGlass,
   flexAlign,
   flexBetween,
   flexCenter,
@@ -18,7 +19,7 @@ import {
   shadow,
 } from "../../styles";
 import heroImg from "../../assets/images/main/hero-image.png";
-import { useMediaQuery } from "@mui/material";
+import { TextField, useMediaQuery } from "@mui/material";
 import {
   ButtonLogin,
   ButtonShopLogin,
@@ -69,7 +70,7 @@ const HeroHome = () => {
                 ></path>
               </svg>
             </span>
-            <input placeholder="ابتدا آدرستان را انتخاب کنید." />
+            <TextField fullWidth placeholder="ابتدا آدرستان را انتخاب کنید." />
             <span className="iconSearch">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -136,6 +137,7 @@ const Wrap = styled.div`
       margin: 3rem 0;
       position: relative;
       width: 90%;
+      background-color: ${setColor.whiteMain};
       ${media.small`
         width: 70%;
       `}
@@ -155,13 +157,11 @@ const Wrap = styled.div`
       input {
         width: 100%;
         height: 100%;
-        border-radius: 5rem;
         ${shadow};
         border: none;
         padding-right: 3rem;
 
         &::placeholder {
-          color: ${setColor.gray};
           font-weight: 700;
         }
       }

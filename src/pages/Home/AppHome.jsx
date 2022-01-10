@@ -1,16 +1,36 @@
 import React from "react";
 import Container from "../../components/Global/Container";
-import { flexBetween, LargeSize, media, setColor, shadow } from "../../styles";
+import {
+  borderRadius,
+  flexBetween,
+  LargeSize,
+  media,
+  setColor,
+  shadow,
+} from "../../styles";
 import svgGoogplePlay from "../../assets/images/svg/GooglePlay.svg";
 import svgBazar from "../../assets/images/svg/Bazar.svg";
 import svgSeab from "../../assets/images/svg/Seab.svg";
 import svgIApps from "../../assets/images/svg/IApps.svg";
 import imgApp from "../../assets/images/main/img_app.png";
 import styled from "styled-components";
-import { Button, useMediaQuery } from "@mui/material";
+import { Button, useMediaQuery, TextField } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { Box } from "@mui/system";
+import { ErrorHelper } from "../../components/Global/ErrorHelper";
 
 const AppHome = () => {
   const matchesLarge = useMediaQuery(LargeSize);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const submitForm = (values) => {
+    console.log(values);
+  };
   return (
     <Container
       bckColor={setColor.containerDark}
@@ -28,10 +48,33 @@ const AppHome = () => {
           <p className="inputInfo">
             برای دریافت لینک دانلود اپلیکیشن، شماره موبایلتان رو وارد کنید
           </p>
-          <div className="inputWrap">
-            <input placeholder="مثلا 09907030335" />
-            <Button className="btn">دریافت لینک</Button>
-          </div>
+          <Box component="form" onSubmit={handleSubmit(submitForm)}>
+            <TextField
+              fullWidth
+              placeholder="مثلا 09126050333"
+              type="tel"
+              id="linkApp"
+              name="linkApp"
+              error={errors.linkApp && true}
+              {...register("linkApp", {
+                required: "لطفا شماره تلفن تان را وارد کنید",
+                minLength: {
+                  value: 11,
+                  message: "لطفا شماره تلفن معتبر وارد کنید",
+                },
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "لطفلا عدد وارد کنید",
+                },
+              })}
+            />
+            <Button className="btn" type="submit" disabled={errors.linkApp}>
+              دریافت لینک
+            </Button>
+          </Box>
+          {errors.linkApp && (
+            <ErrorHelper>{errors.linkApp.message}</ErrorHelper>
+          )}
           <div className="linksApp">
             <a
               target="_blank"
@@ -115,19 +158,13 @@ const Wrap = styled.div`
       font-weight: 500;
       color: ${setColor.blackDark};
     }
-    .inputWrap {
-      margin: 0.5rem 0 2rem 0;
-      width: 100%;
+    form {
+      /* margin: 0.5rem 0 2rem 0; */
       position: relative;
       input {
-        border-radius: 0.375rem;
-        width: 100%;
-        height: 3rem;
-        border: none;
+        background-color: ${setColor.whiteMain};
+        ${borderRadius}
         ${shadow};
-        &::placeholder {
-          padding-right: 0.5rem;
-        }
       }
       button {
         position: absolute;
@@ -135,7 +172,7 @@ const Wrap = styled.div`
         top: 50%;
         transform: translateY(-50%);
         padding: 0.25rem 0.75rem;
-        margin-left: 0.5rem;
+        margin-left: 0.75rem;
       }
     }
     .linksApp {

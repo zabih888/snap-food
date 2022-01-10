@@ -27,7 +27,9 @@ const Globals = createGlobalStyle`
      color: ${setColor.whiteMain} !important;
      font-size: 16px !important;
      font-weight: 600 !important;
-     border: 2px solid ${setColor.primaryLight} !important;
+     &:disabled{
+         background-color: #dddddd !important;
+     }
  }
 `;
 

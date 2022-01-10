@@ -24,7 +24,9 @@ export const shadow = () => {
   return `box-shadow: rgba(58, 61, 66, 0.06) 0px 1px 0px,
   rgba(0, 0, 0, 0.2) 0px 4px 16px -8px;`;
 };
-
+export const borderRadius = () => {
+  return `border-radius: 0.375rem;`;
+};
 
 export const flexBetween = () => {
   return `display: flex; justify-content: space-between; align-items: center;`;

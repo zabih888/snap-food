@@ -1,7 +1,8 @@
-import { useMediaQuery } from "@mui/material";
+import { TextField, useMediaQuery } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import {
+  borderRadius,
   flexAlign,
   flexBetween,
   LargeSize,
@@ -36,7 +37,7 @@ const Header = () => {
         </div>
         {matchesLarge ? (
           <div className="inputWrap">
-            <input placeholder="جست و جو در اسنپ فود" />
+            <TextField fullWidth variant="filled" placeholder="جست و جو در اسنپ فود" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 17 17"
@@ -134,24 +135,19 @@ const Head = styled.header`
     position: relative;
 
     input {
-      background-color: ${setColor.containerDark};
-      width: 100%;
-      height: 2.75rem;
-      border-radius: 0.375rem;
-      border: none;
+      ${borderRadius}
       ${shadow};
 
       &::placeholder {
         letter-spacing: -1px;
-        color: ${setColor.gray};
-        padding-right: 3rem;
-        font-size: 16px;
+        top: 50%;
+      transform: translateY(-30%);
       }
     }
     .icon {
       color: ${setColor.gray};
       position: absolute;
-      right: 1rem;
+      left: 1rem;
       top: 50%;
       transform: translateY(-50%);
     }
