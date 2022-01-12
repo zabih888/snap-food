@@ -19,7 +19,7 @@ const MenuSlider = () => {
         // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={!matchesXLarge ? "auto" : 10}
+        slidesPerView={!matchesXLarge ? 4 : 10}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}

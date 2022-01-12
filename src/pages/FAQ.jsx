@@ -3,13 +3,12 @@ import {
   AccordionDetails,
   AccordionSummary,
   Container,
-  Typography,
 } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import HeaderTop from "../components/Global/HeaderTop";
 import Footer from "../components/Layout/Footer";
-import { setColor } from "../styles";
+import { paddingContainerWithTop, setColor } from "../styles";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { faqData } from "../data";
 
@@ -46,14 +45,10 @@ const FAQ = () => {
 export default FAQ;
 
 const Wrap = styled.div`
-  padding: 6rem 1rem;
-  
-  .title{
-      padding-bottom: 2rem;
-  }
+  ${paddingContainerWithTop}
   .question{}
   .answer{
-      color: ${setColor.blackLight};
-      line-height: 1.8;
+    color: ${setColor.gray};
+    line-height: 2s;
   }
 `;

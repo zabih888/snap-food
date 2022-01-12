@@ -1,30 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Container from "../../components/Global/Container";
+import {SvgLogo } from "../../components/Global/SvgWrapp";
 import {
-  SvgLoction,
-  SvgLogin,
-  SvgLogo,
-  SvgSreach,
-} from "../../components/Global/SvgWrapp";
-import {
-  containerGlass,
   flexAlign,
   flexBetween,
   flexCenter,
   media,
   MediumSize,
+  paddingBottom,
+  paddingContainer,
   setColor,
   shadow,
 } from "../../styles";
 import heroImg from "../../assets/images/main/hero-image.png";
-import { TextField, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import {
   ButtonLogin,
-  ButtonShopLogin,
 } from "../../components/Global/Buttons/ButtonLogin";
 import MenuSlider from "../../components/Global/MenuSlider";
+import { ButtonShopLogin } from "../../components/Global/Buttons/ButtonShopLogin";
 
 const HeroHome = () => {
   const matchesMedium = useMediaQuery(MediumSize);
@@ -36,7 +31,7 @@ const HeroHome = () => {
           <SvgLogo />
           <div className="leftWrap">
             {matchesMedium ? <ButtonShopLogin /> : undefined}
-            {matchesMedium ? <ButtonLogin /> : <SvgLogin />}
+            <ButtonLogin />
           </div>
         </div>
 
@@ -70,7 +65,7 @@ const HeroHome = () => {
                 ></path>
               </svg>
             </span>
-            <TextField fullWidth placeholder="ابتدا آدرستان را انتخاب کنید." />
+            <input placeholder="ابتدا آدرستان را انتخاب کنید." />
             <span className="iconSearch">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +92,7 @@ export default HeroHome;
 const Wrap = styled.div`
   overflow: hidden;
   position: relative;
-  padding: 0 1rem;
+  ${paddingContainer}
   ${media.large`
     padding: 0 3rem;
   `}
@@ -111,8 +106,10 @@ const Wrap = styled.div`
 
   .head {
     ${flexBetween}
-    padding: 2rem 0 10rem 0;
     padding: 2rem 0 4rem 0;
+    ${media.large`
+    padding: 2rem 0 10rem 0;
+    `}
     .leftWrap {
       ${flexAlign}
     }
@@ -120,6 +117,7 @@ const Wrap = styled.div`
 
   .main {
     h1 {
+      ${paddingBottom};
       color: ${setColor.blackMain};
       font-size: 1.75rem;
       ${media.large`
@@ -130,19 +128,15 @@ const Wrap = styled.div`
         color: ${setColor.primaryMain};
       }
     }
-    p {
-      color: ${setColor.blackLight};
-    }
     .inputWrap {
       margin: 3rem 0;
       position: relative;
       width: 90%;
-      background-color: ${setColor.whiteMain};
       ${media.small`
-        width: 70%;
+      width: 70%;
       `}
       ${media.large`
-        width: 45%
+      width: 45%
       `}
       height: 56px;
       margin-bottom: 10rem;
@@ -155,14 +149,16 @@ const Wrap = styled.div`
         transform: translateY(-50%);
       }
       input {
+        background-color: ${setColor.whiteMain};
+        ${shadow};
         width: 100%;
         height: 100%;
-        ${shadow};
         border: none;
         padding-right: 3rem;
-
+        border-radius: 4rem;
         &::placeholder {
-          font-weight: 700;
+          font-size: 14px;
+          font-size: 600;
         }
       }
       .iconSearch {

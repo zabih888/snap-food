@@ -6,14 +6,22 @@ import hero from "../../assets/images/main/imgDesktop.jpg";
 import heroMobile from "../../assets/images/main/imgMobile.png";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { SvgLogoSmall } from "../../components/Global/SvgWrapp";
-import { flexBetween, LargeSize, media, setColor } from "../../styles";
+import {
+  flexBetween,
+  LargeSize,
+  media,
+  paddingBottom,
+  paddingTop,
+  setColor,
+} from "../../styles";
 import ColleagueHeroForm from "./ColleagueHeroForm";
 
 const ColleagueHero = () => {
   const matchesLarge = useMediaQuery(LargeSize);
   return (
     <Background>
-      <BackgroundT>
+      <img src={matchesLarge ? hero : heroMobile} />
+      <LinearGradient>
         <Wrap className="containerXL">
           <section className="header">
             {matchesLarge ? (
@@ -47,7 +55,7 @@ const ColleagueHero = () => {
             </div>
           </section>
         </Wrap>
-      </BackgroundT>
+      </LinearGradient>
     </Background>
   );
 };
@@ -57,34 +65,43 @@ export default ColleagueHero;
 //                              STYLE
 // =======================================================================
 const Background = styled.main`
-  background-image: url(${heroMobile});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 60vh;
-  z-index: -1;
-  ${media.large`
-  background-image: url(${hero});
-  height: 100vh;
-  `}
-  &::before {
-    content: "";
+  position: relative;
+  img {
     width: 100%;
-    height: 60vh;
     ${media.large`
-    height: 100vh;
+    height: 100%;
+    object-fit: cover;
     `}
     position: absolute;
-    background-color: black;
+    z-index: -1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
     opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    ${media.large`
+    background-color: black;
+    `}
   }
 `;
-const BackgroundT = styled.main`
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), #000);
+const LinearGradient = styled.main`
+  background: linear-gradient(360deg, #000, #000, #000, rgba(0, 0, 0, 0.2));
+  ${media.small`
+  background: linear-gradient(360deg, #000, #000, rgba(0, 0, 0, 0.2));
+  `}
+  ${media.medium`
+  background: linear-gradient(360deg, #000, rgba(0, 0, 0, 0.2));
+  `}
+  position: relative;
+  ${media.large`
+  background: none;
+  `}
 `;
 const Wrap = styled.div`
-  padding: 2rem 1rem 0 1rem;
+  ${paddingTop}
   .header {
     position: relative;
     display: flex;
@@ -116,13 +133,16 @@ const Wrap = styled.div`
   }
 
   .main {
-    margin-top: 9rem;
+    margin-top: 10rem;
+    align-items: center;
+    ${media.large`
     position: relative;
     display: flex;
-    /* justify-content: space-between; */
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    `}
     .info {
+      margin-bottom: 5rem;
       .title {
         color: ${setColor.whiteMain};
         font-weight: 800;
@@ -133,8 +153,16 @@ const Wrap = styled.div`
       }
       .subTitle {
         color: ${setColor.whiteMain};
-        font-weight: 500;
       }
+    }
+
+    .formWrap {
+      width: 100%;
+      ${paddingBottom}
+      ${media.large`
+      width: 400px;
+      margin-bottom: 0;
+      `}
     }
   }
 `;

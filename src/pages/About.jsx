@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import imgDelivery from "../assets/images/svg/Take Away-pana.svg";
-import { flexCenter, setColor } from "../styles";
+import { paddingContainerWithTop, setColor } from "../styles";
 import Footer from "../components/Layout/Footer";
 import HeaderTop from "../components/Global/HeaderTop";
 const About = () => {
@@ -72,18 +72,13 @@ export default About;
 const Wrap = styled.div`
   max-width: 1300px;
   margin: auto;
-  padding: 6rem 1rem;
+  ${paddingContainerWithTop}
 
   .title {
-    color: ${setColor.blackDark};
-    ${flexCenter}
+    text-align: center;
     span {
       color: ${setColor.primaryDark};
     }
-  }
-  .desc {
-    line-height: 1.8;
-    color: ${setColor.blackLight};
   }
 
   .info {
@@ -96,7 +91,6 @@ const Wrap = styled.div`
       margin-top: 2rem;
       li {
         position: relative;
-        color: ${setColor.blackLight};
         padding-bottom: .5rem;
         &::before {
           content: "";

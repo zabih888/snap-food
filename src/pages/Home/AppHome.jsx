@@ -5,6 +5,7 @@ import {
   flexBetween,
   LargeSize,
   media,
+  paddingContainer,
   setColor,
   shadow,
 } from "../../styles";
@@ -120,7 +121,7 @@ export default AppHome;
 const Wrap = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding: 0 1rem;
+  ${paddingContainer}
   ${media.large`
   grid-template-columns: 3fr 2fr;
   padding: 0 9rem 0 3rem;
@@ -138,28 +139,15 @@ const Wrap = styled.div`
     ${media.large`
       padding-left: 4rem;
     `}
-
-    .title {
-      font-size: 1.75rem;
-      ${media.large`
-      font-size: 3rem;
-      `}
-      font-weight: 500;
-      margin: 2rem 0;
-    }
-    .desc {
-      color: ${setColor.blackLight};
-      line-height: 2;
+    .desc{
       margin-bottom: 2rem;
     }
-
     .inputInfo {
       font-size: 13px;
       font-weight: 500;
       color: ${setColor.blackDark};
     }
     form {
-      /* margin: 0.5rem 0 2rem 0; */
       position: relative;
       input {
         background-color: ${setColor.whiteMain};
@@ -179,6 +167,7 @@ const Wrap = styled.div`
       display: grid;
       gap: 1rem;
       grid-template-columns: 1fr 1fr;
+      margin-top: 1rem;
       ${media.medium`
       grid-template-columns: repeat(4, 1fr);
       `}

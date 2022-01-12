@@ -13,6 +13,7 @@ svg {
 .containerXL {
   max-width: 1600px;
   margin: auto;
+  padding: 0 1rem;
 }
 
 .inputSpace{

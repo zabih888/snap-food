@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderTop from "../components/Global/HeaderTop";
 import Footer from "../components/Layout/Footer";
-import { setColor } from "../styles";
+import { paddingContainerWithTop, setColor } from "../styles";
 
 const Policy = () => {
   return (
@@ -70,19 +70,14 @@ const Policy = () => {
 export default Policy;
 
 const Wrap = styled.div`
- padding: 6rem 1rem;
+ ${paddingContainerWithTop}
  padding-top: 10rem;
-
- .title{
-     font-size: 1rem;
- }
 
  ul {
       padding-right: 1rem;
       margin-top: 2rem;
       li {
         position: relative;
-        color: ${setColor.blackLight};
         padding-bottom: .5rem;
         &::before {
           content: "";

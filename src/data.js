@@ -33,6 +33,13 @@ import eightCompany from "./assets/images/company/shemroon.jpg";
 import nineCompany from "./assets/images/company/tarighat.jpg";
 import tenCompany from "./assets/images/company/tavazo.jpg";
 
+import oneColleague from "./assets/images/colleague/Bakery.jpg";
+import twoColleague from "./assets/images/colleague/Coffee.jpg";
+import threeColleague from "./assets/images/colleague/Confectionary.jpg";
+import fourColleague from "./assets/images/colleague/Fruit.jpg";
+import fiveColleague from "./assets/images/colleague/IceCream.jpg";
+import sixColleague from "./assets/images/colleague/Nuts.jpg";
+import sevenColleague from "./assets/images/colleague/Protein.jpg";
 //
 export const menuData = [
   { image: oneMenu, text: "رستوران" },
@@ -133,4 +140,14 @@ export const companyData = [
   { img: eightCompany },
   { img: nineCompany },
   { img: tenCompany },
+];
+
+export const colleaagueCategoryData = [
+  { img: oneColleague, text: "نانوایی" },
+  { img: twoColleague, text: "رستوران و کافه" },
+  { img: threeColleague, text: "شیرینی" },
+  { img: fourColleague, text: "میوه" },
+  { img: fiveColleague, text: "بستنی" },
+  { img: sixColleague, text: "آجیل" },
+  { img: sevenColleague, text: "پروتئین" },
 ];

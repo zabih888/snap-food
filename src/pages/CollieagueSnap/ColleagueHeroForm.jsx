@@ -6,10 +6,10 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { ErrorHelper } from "../../components/Global/ErrorHelper";
-import { setColor } from "../../styles";
+import { borderRadius, media, setColor } from "../../styles";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -194,10 +194,9 @@ export default ColleagueHeroForm;
 // =======================================================================
 const Wrap = styled.div`
   background-color: ${setColor.containerLight};
-  /* width: 400px; */
-  padding: 2rem 1.5rem;
-
-  .title {
-    margin-bottom: 2rem;
-  }
+  ${borderRadius}
+  ${media.large`
+  width: 400px;
+  `}
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
 `;

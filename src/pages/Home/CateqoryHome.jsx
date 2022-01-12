@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/Global/Container";
-import { flexAlign, media, setColor } from "../../styles";
+import { borderRadius, flexAlign, media, paddingContainer, setColor, shadow, shadowDark } from "../../styles";
 import { categoryData } from "../../data.js";
 import styled from "styled-components";
 const CateqoryHome = () => {
@@ -37,12 +37,7 @@ export default CateqoryHome;
 //                              STYLE
 // =======================================================================
 const Wrap = styled.div`
-  padding: 0 1rem;
-
-  .title {
-    color: ${setColor.blackDark};
-    margin-bottom: 1rem;
-  }
+  ${paddingContainer}
   ${media.large`
     padding: 0 ;
   `}
@@ -63,11 +58,10 @@ const Wrap = styled.div`
 `;
 const Item = styled.div`
   position: relative;
-  box-shadow: rgb(58 61 66 / 6%) 0px 1px 0px,
-    rgb(0 0 0 / 30%) 0px 8px 32px -16px;
+  ${shadowDark}
   height: 100px;
   background-position: center;
-  border-radius: 0.75rem;
+  border-radius: 2rem;
   border: 5px solid rgb(255, 255, 255);
   cursor: pointer;
 
@@ -83,6 +77,7 @@ const Item = styled.div`
     align-items: center;
     justify-content: space-evenly;
     border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     .arrow {
       color: ${setColor.primaryLight};
       ${flexAlign}

@@ -1,7 +1,8 @@
-import { useMediaQuery } from "@mui/material";
+import { TextField, useMediaQuery } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import {
+  borderRadius,
   flexAlign,
   flexBetween,
   LargeSize,
@@ -9,8 +10,9 @@ import {
   setColor,
   shadow,
 } from "../../styles";
-import { ButtonLogin, ButtonShopLogin } from "./Buttons/ButtonLogin";
-import { SvgLogin, SvgLogoSmall } from "./SvgWrapp";
+import { ButtonLogin } from "./Buttons/ButtonLogin";
+import { ButtonShopLogin } from "./Buttons/ButtonShopLogin";
+import { SvgLogoSmall } from "./SvgWrapp";
 
 const HeaderTop = () => {
   const matchesLarge = useMediaQuery(LargeSize);
@@ -36,7 +38,12 @@ const HeaderTop = () => {
       </div>
       {matchesLarge ? (
         <div className="inputWrap">
-          <input placeholder="جست و جو در اسنپ فود" />
+          <TextField
+            fullWidth
+            variant="filled"
+            placeholder="جست و جو در اسنپ فود"
+          />
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 17 17"
@@ -48,26 +55,10 @@ const HeaderTop = () => {
           </svg>
         </div>
       ) : undefined}
-
-      {matchesLarge ? (
-        <div className="left">
-          <ButtonShopLogin />
-          <ButtonLogin />
-        </div>
-      ) : (
-        <div className="leftSmall">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 17 17"
-            fill="currentColor"
-            width={17}
-            className="icon"
-          >
-            <path d="M7.75008 0.666016C11.6621 0.666016 14.8334 3.83733 14.8334 7.74935C14.8334 9.40479 14.2655 10.9276 13.3139 12.1336L16.5477 15.3684C16.8731 15.6939 16.8731 16.2215 16.5477 16.5469C16.2222 16.8724 15.6946 16.8724 15.3692 16.5469L12.1343 13.3132C10.9283 14.2648 9.40552 14.8327 7.75008 14.8327C3.83806 14.8327 0.666748 11.6614 0.666748 7.74935C0.666748 3.83733 3.83806 0.666016 7.75008 0.666016ZM7.75008 2.33268C4.75854 2.33268 2.33341 4.75781 2.33341 7.74935C2.33341 10.7409 4.75854 13.166 7.75008 13.166C10.7416 13.166 13.1667 10.7409 13.1667 7.74935C13.1667 4.75781 10.7416 2.33268 7.75008 2.33268Z"></path>
-          </svg>
-          <SvgLogin />
-        </div>
-      )}
+      <div className="left">
+        <ButtonShopLogin />
+        <ButtonLogin />
+      </div>
     </Head>
   );
 };
@@ -109,37 +100,25 @@ const Head = styled.header`
   .left {
     display: flex;
   }
-  .leftSmall {
-    display: flex;
-    .icon {
-      margin-left: 1.5rem;
-      cursor: pointer;
-    }
-  }
 
   .inputWrap {
     width: 30%;
     position: relative;
 
     input {
-      background-color: ${setColor.containerDark};
-      width: 100%;
-      height: 2.75rem;
-      border-radius: 0.375rem;
-      border: none;
+      border-radius: 1rem;
       ${shadow};
 
       &::placeholder {
         letter-spacing: -1px;
-        color: ${setColor.gray};
-        padding-right: 3rem;
-        font-size: 16px;
+        top: 50%;
+        transform: translateY(-30%);
       }
     }
     .icon {
       color: ${setColor.gray};
       position: absolute;
-      right: 1rem;
+      left: 1rem;
       top: 50%;
       transform: translateY(-50%);
     }

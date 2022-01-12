@@ -102,35 +102,23 @@ const Footer = () => {
         <div>
           <ul>
             <li>
-              <Link to="/">درباره اسنپ فود</Link>
+              <Link to="/about">درباره اسنپ فود</Link>
             </li>
             <li>
-              <Link to="/">وبلاگ</Link>
+              <Link to="/policy">قوانین سایت</Link>
             </li>
             <li>
-              <Link to="/">قوانین سایت</Link>
-            </li>
-            <li>
-              <Link to="/">حریم خصوصی</Link>
-            </li>
-            <li>
-              <Link to="/">ثبت نام فروشندگان</Link>
+              <Link to="/privacy">حریم خصوصی</Link>
             </li>
           </ul>
         </div>
         <div>
           <ul>
             <li>
-              <Link to="/">تماس با اسنپ فود</Link>
+              <Link to="/colleague">ثبت نام فروشندگان</Link>
             </li>
             <li>
-              <Link to="/">پرسش های متداول</Link>
-            </li>
-            <li>
-              <Link to="/">ثبت شکایات</Link>
-            </li>
-            <li>
-              <Link to="/">اپلیکیشن موبایل</Link>
+              <Link to="/faq">پرسش های متداول</Link>
             </li>
           </ul>
         </div>
@@ -198,7 +186,7 @@ const Wrap = styled.div`
       font-size: 14px;
       line-height: 2.5;
 
-      &:hover{
+      &:hover {
         color: ${setColor.blackDark};
         font-weight: 500;
       }

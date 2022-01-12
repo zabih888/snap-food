@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { setColor } from "../../styles";
+import { media, setColor } from "../../styles";
 
 const Globals = createGlobalStyle`
  *, *::before, *::after{
@@ -30,6 +30,28 @@ const Globals = createGlobalStyle`
      &:disabled{
          background-color: #dddddd !important;
      }
+ }
+
+ .title{
+     color: ${setColor.blackDark};
+    font-size: 1.75rem;
+      ${media.large`
+      font-size: 2rem;
+      `}
+      font-weight: 500;
+      margin: 1.5rem 0;
+ }
+
+ .desc{
+    line-height: 2;
+ }
+
+ .subTitle{
+    font-weight: 400;
+      font-size: 1.2rem;
+      ${media.large`
+      font-size: 1.5rem;
+      `}
  }
 `;
 

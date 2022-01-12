@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Container from "../components/Global/Container";
 import HeaderTop from "../components/Global/HeaderTop";
 import Footer from "../components/Layout/Footer";
-import { setColor } from "../styles";
+import { paddingContainerWithTop, setColor } from "../styles";
 
 const Privacy = () => {
   return (
@@ -15,7 +15,7 @@ const Privacy = () => {
             <h1 className="title">
               سیاست حفظ اطلاعات و <span>حریم خصوصی</span>
             </h1>
-            <div className="info">
+            <div className="desc">
               <p>
                 اسنپ فود با تاکید بر احترامی که برای حریم شخصی کاربران قائل است،
                 برای سفارش، ثبت نظر یا استفاده از برخی امکانات وب سایت اطلاعاتی
@@ -92,21 +92,17 @@ const Privacy = () => {
 export default Privacy;
 
 const Wrap = styled.div`
-  padding: 6rem 1rem;
+  ${paddingContainerWithTop}
 
   .title {
-    color: ${setColor.blackDark};
     span {
       color: ${setColor.primaryDark};
     }
     text-align: center;
-    margin-bottom: 2rem;
   }
 
-  .info {
+  .desc {
     p {
-      line-height: 1.8;
-      color: ${setColor.blackLight};
       padding-bottom: 2rem;
     }
   }
