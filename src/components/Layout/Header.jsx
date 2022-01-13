@@ -1,9 +1,11 @@
 import { TextField, useMediaQuery } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   flexAlign,
   flexBetween,
+  flexCenter,
   LargeSize,
   media,
   setColor,
@@ -13,9 +15,11 @@ import { ButtonLogin } from "../Global/Buttons/ButtonLogin";
 import { ButtonShopLogin } from "../Global/Buttons/ButtonShopLogin";
 import MenuSlider from "../Global/MenuSlider";
 import { SvgLogoSmall } from "../Global/SvgWrapp";
-
+import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
+import { useSelector } from "react-redux";
 const Header = () => {
   const matchesLarge = useMediaQuery(LargeSize);
+  const { cart } = useSelector((state) => state.cart);
   return (
     <HeaderWrap>
       <Head>
@@ -54,8 +58,12 @@ const Header = () => {
           </div>
         ) : undefined}
         <div className="left">
-          <ButtonShopLogin />
+          {matchesLarge ? <ButtonShopLogin /> : undefined}
           <ButtonLogin />
+          <Link to="/cart" className="iconWrap">
+            <LocalGroceryStoreOutlinedIcon className="icon" />
+            <span className="badge">{cart.length}</span>
+          </Link>
         </div>
       </Head>
       <div style={{ padding: "0 2rem" }}>
@@ -109,6 +117,28 @@ const Head = styled.header`
 
   .left {
     display: flex;
+    .iconWrap {
+      margin-right: 1rem;
+      position: relative;
+      .icon {
+        color: ${setColor.blackLight};
+        font-size: 1.7rem;
+      }
+      .badge {
+        position: absolute;
+        ${flexCenter};
+        font-size: 13px;
+        font-weight: 700;
+        top: 20px;
+        left: 10px;
+        width: 24px;
+        height: 24px;
+        background-color: ${setColor.primaryLight};
+        border-radius: 50%;
+        color: ${setColor.whiteMain};
+        z-index: 10;
+      }
+    }
   }
   .inputWrap {
     width: 30%;

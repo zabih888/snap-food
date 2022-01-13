@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { media, setColor } from "../../styles";
+import { flexCenter, media, setColor } from "../../styles";
 
 const Globals = createGlobalStyle`
  *, *::before, *::after{
@@ -52,6 +52,13 @@ const Globals = createGlobalStyle`
       ${media.large`
       font-size: 1.5rem;
       `}
+ }
+
+ .loading{
+     color: ${setColor.primaryMain};
+     width: 100%;
+     display: block;
+     margin: auto;
  }
 `;
 

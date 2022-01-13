@@ -1,36 +1,24 @@
 
-
-POST http://localhost:5000/api/user/login HTTP/1.1
-content-type: application/json
+POST https://api-coffee-flask.herokuapp.com/api/users/login HTTP/1.1
+Content-Type: application/json
 
 {
-    "email": "wahedm@gmail9.com",
-    "password": "1234579444"
+    "userName": "ronaldo",
+    "password": "123456789"
 }
 
 ###
-
-POST http://localhost:5000/api/user/register HTTP/1.1
+POST https://api-coffee-flask.herokuapp.com/api/users/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "wahedm@gmail9.com",
-    "password": "1234579444",
-    "name":"wahed m",
-    "phoneNumber":"09182471500"
+    "firstName": "ronaldo",
+    "lastName": "ronaldo",
+    "userName": "ronaldo",
+    "password": "123456789",
+    "phoneNumber": "09381530461",
+    "email": "ronaldo@gmail.com"
 }
-
-
 ###
-
-GET http://localhost:5000/api/product HTTP/1.1
+GET  https://retoolapi.dev/CE6lFS/data HTTP/1.1
 content-type: application/json
-
-###
-
-
-###
-GET http://localhost:5000/api/product/seed HTTP/1.1
-content-type: application/json
-
-###

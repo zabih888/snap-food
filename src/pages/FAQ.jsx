@@ -2,13 +2,13 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Container,
 } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import HeaderTop from "../components/Global/HeaderTop";
 import Footer from "../components/Layout/Footer";
 import { paddingContainerWithTop, setColor } from "../styles";
+import Container from "../components/Global/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { faqData } from "../data";
 

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Container from "../../components/Global/Container";
-import {SvgLogo } from "../../components/Global/SvgWrapp";
+import { SvgLogo } from "../../components/Global/SvgWrapp";
 import {
+  containerGlass,
   flexAlign,
   flexBetween,
   flexCenter,
@@ -15,9 +16,7 @@ import {
 } from "../../styles";
 import heroImg from "../../assets/images/main/hero-image.png";
 import { useMediaQuery } from "@mui/material";
-import {
-  ButtonLogin,
-} from "../../components/Global/Buttons/ButtonLogin";
+import { ButtonLogin } from "../../components/Global/Buttons/ButtonLogin";
 import MenuSlider from "../../components/Global/MenuSlider";
 import { ButtonShopLogin } from "../../components/Global/Buttons/ButtonShopLogin";
 
@@ -78,7 +77,9 @@ const HeroHome = () => {
             </span>
           </div>
         </div>
-        <MenuSlider />
+        <div className="sliderWrap">
+          <MenuSlider />
+        </div>
       </Wrap>
     </Container>
   );
@@ -175,5 +176,10 @@ const Wrap = styled.div`
         transform: translateY(-50%);
       }
     }
+  }
+
+  .sliderWrap {
+    ${containerGlass};
+    border-radius: 1.5rem;
   }
 `;

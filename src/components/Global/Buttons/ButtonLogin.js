@@ -1,7 +1,7 @@
 import { Button, Modal, TextField, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { LargeSize, setColor } from "../../../styles";
+import { LargeSize, media, setColor } from "../../../styles";
 import { SvgLogo } from "../SvgWrapp";
 import { useForm } from "react-hook-form";
 import { ErrorHelper } from "../ErrorHelper";
@@ -61,7 +61,7 @@ export const ButtonLogin = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <BoxE>
+        <Box>
           <div className="top">
             <SvgLogo />
           </div>
@@ -189,7 +189,7 @@ export const ButtonLogin = () => {
               ورود به سایت
             </Button>
           </form>
-        </BoxE>
+        </Box>
       </Modal>
     </>
   );
@@ -197,12 +197,15 @@ export const ButtonLogin = () => {
 // =======================================================================
 //                              STYLE
 // =======================================================================
-const BoxE = styled.div`
+const Box = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
+  ${media.medium`
   width: 400px;
+  `}
   background-color: ${setColor.background};
   padding: 2rem;
   border: 5px solid ${setColor.containerDark};
