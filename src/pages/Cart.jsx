@@ -20,7 +20,11 @@ import { useDispatch } from "react-redux";
 import { remove, increment, decrement } from "../store/cart/cartSlice";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../store/users/auth";
+import SuccessToast from "../components/Global/SuccessToast";
+import { openModal } from "../store/users/loginSlice";
+
 const Cart = () => {
   const matchesLarge = useMediaQuery(LargeSize);
   const matchesMedium = useMediaQuery(MediumSize);
@@ -32,6 +36,18 @@ const Cart = () => {
     if (item.quantity === 1) {
       dispatch(remove(item));
     }
+  };
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const handleBuy = () => {
+    if (auth) {
+      navigate("/");
+      SuccessToast("خرید با موفقیت انجام شد ممنون از اعتماد شما");
+    }else{
+      dispatch(openModal(true))
+    }
+    
   };
 
   return (
@@ -114,7 +130,7 @@ const Cart = () => {
                 <p>جمع کل بعد از تخفیف</p>
                 <span>{total} تومن</span>
               </div>
-              <Button fullWidth className="btn">
+              <Button fullWidth className="btn" onClick={handleBuy}>
                 ادامه فرایند خرید
               </Button>
             </main>
@@ -168,8 +184,9 @@ const Wrap = styled.div`
       color: ${setColor.primaryMain};
     }
     img {
+      margin-bottom: 1rem;
       margin-right: 1.5rem;
-      width: 120px;
+      width: 110px;
       border-radius: 1rem;
     }
     .guarantee {

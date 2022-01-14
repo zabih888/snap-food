@@ -40,7 +40,11 @@ const Products = () => {
     setOpen(true);
     dispatch(showPreview(item));
   };
-  const handleClose = () => setOpen(false);
+
+  const handleAddToCart = () => {
+    dispatch(increment({ ...preview, quantity: 1 }));
+    setOpen(false);
+  };
   return (
     <>
       <Container spaceSection="5rem">
@@ -87,7 +91,7 @@ const Products = () => {
             </Swiper>
             <Modal
               open={open}
-              onClose={handleClose}
+              onClose={() => setOpen(false)}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
@@ -99,13 +103,7 @@ const Products = () => {
                 </div>
                 <p>{preview.discription}</p>
                 <div>
-                  <Button
-                    fullWidth
-                    className="btn"
-                    onClick={() =>
-                      dispatch(increment({ ...preview, quantity: 1 }))
-                    }
-                  >
+                  <Button fullWidth className="btn" onClick={handleAddToCart}>
                     <AddShoppingCartOutlinedIcon className="icon" />
                     افزودن به سبد خرید
                   </Button>

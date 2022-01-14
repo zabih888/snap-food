@@ -1,46 +1,41 @@
-import { Button, Modal, TextField, useMediaQuery } from "@mui/material";
+import { Button, Modal, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { LargeSize, media, setColor } from "../../../styles";
 import { SvgLogo } from "../SvgWrapp";
-import { useForm } from "react-hook-form";
-import { ErrorHelper } from "../ErrorHelper";
+import Login from "../../Login_Signup/Login";
+import Signup from "../../Login_Signup/Signup";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../../store/users/loginSlice";
 
 export const ButtonLogin = () => {
   const matchesLarge = useMediaQuery(LargeSize);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
-  const submitForm = (values) => {
-    console.log(values);
-    reset();
-  };
 
   const [showLogin, setShowLogin] = useState(true);
   const [showSignup, setShowSignup] = useState(false);
+  const { showModal } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(openModal(false));
+  };
+
   const handleShowLogin = () => {
     setShowLogin(true);
     setShowSignup(false);
   };
   const handleShowSignup = () => {
-    setShowLogin(false);
     setShowSignup(true);
+    setShowLogin(false);
   };
+
   return (
     <>
       {matchesLarge ? (
-        <Button className="btn" onClick={handleOpen}>
+        <Button className="btn" onClick={() => dispatch(openModal(true))}>
           ورود <small>یا</small> عضویت
         </Button>
       ) : (
-        <span onClick={handleOpen}>
+        <span onClick={() => dispatch(openModal(true))}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 14 18"
@@ -55,8 +50,9 @@ export const ButtonLogin = () => {
           </svg>
         </span>
       )}
+      {console.log(showModal)}
       <Modal
-        open={open}
+        open={showModal}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -81,114 +77,10 @@ export const ButtonLogin = () => {
               عضویت
             </Button>
           </div>
-          <form onSubmit={handleSubmit(submitForm)}>
-            {showLogin ? (
-              <div>
-                <TextField
-                  fullWidth
-                  placeholder="ایمیل"
-                  className="inputSpace"
-                  type="email"
-                  name="email"
-                  id="email"
-                  error={errors.email && true}
-                  {...register("email", {
-                    required: "لطفا ایمیل خود را وارد کنید ",
-                  })}
-                />
-                {errors.email && (
-                  <ErrorHelper>{errors.email.message}</ErrorHelper>
-                )}
-                <TextField
-                  fullWidth
-                  placeholder="رمز عبور"
-                  className="inputSpace"
-                  type="password"
-                  name="password"
-                  id="password"
-                  error={errors.password && true}
-                  {...register("password", {
-                    required: "لطفا رمز عبور را وارد کنید",
-                  })}
-                />
-                {errors.password && (
-                  <ErrorHelper>{errors.password.message}</ErrorHelper>
-                )}
-              </div>
-            ) : undefined}
-            {showSignup ? (
-              <div>
-                <TextField
-                  fullWidth
-                  placeholder="نام کاربری"
-                  className="inputSpace"
-                  type="text"
-                  name="name"
-                  id="name"
-                  error={errors.name && true}
-                  {...register("name", {
-                    required: "لطفا نام کاربری را وارد کنید",
-                  })}
-                />
-                {errors.name && (
-                  <ErrorHelper>{errors.name.message}</ErrorHelper>
-                )}
-                <TextField
-                  fullWidth
-                  placeholder="ایمیل"
-                  className="inputSpace"
-                  type="email"
-                  name="email"
-                  id="email"
-                  error={errors.email && true}
-                  {...register("email", {
-                    required: "لطفا ایمیل خود را وارد کنید",
-                  })}
-                />
-                {errors.email && (
-                  <ErrorHelper>{errors.email.message}</ErrorHelper>
-                )}
-                <TextField
-                  fullWidth
-                  placeholder="رمز عبور"
-                  className="inputSpace"
-                  type="password"
-                  name="password"
-                  id="password"
-                  error={errors.password && true}
-                  {...register("password", {
-                    required: "لطفا رمز عبور را وارد کنید",
-                  })}
-                />
-                {errors.password && (
-                  <ErrorHelper>{errors.password.message}</ErrorHelper>
-                )}
-                <TextField
-                  fullWidth
-                  placeholder="شماره تلفن"
-                  className="inputSpace"
-                  type="tel"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  error={errors.phoneNumber && true}
-                  {...register("phoneNumber", {
-                    required: "لطفا شماره تلفن را وارد کنید",
-                  })}
-                />
-                {errors.phoneNumber && (
-                  <ErrorHelper>{errors.phoneNumber.message}</ErrorHelper>
-                )}
-              </div>
-            ) : undefined}
-            <Button
-              fullWidth
-              className="btn"
-              type="submit"
-              disabled={errors.email || errors.password}
-            >
-              ورود به سایت
-            </Button>
-          </form>
+          <section>
+            {showLogin ? <Login onClose={handleClose} /> : undefined}
+            {showSignup ? <Signup onClose={handleClose} /> : undefined}
+          </section>
         </Box>
       </Modal>
     </>
