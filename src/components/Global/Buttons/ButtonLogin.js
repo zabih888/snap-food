@@ -7,6 +7,7 @@ import Login from "../../Login_Signup/Login";
 import Signup from "../../Login_Signup/Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../../store/users/loginSlice";
+import { useAuth, useAuthActions } from "../../../store/users/auth";
 
 export const ButtonLogin = () => {
   const matchesLarge = useMediaQuery(LargeSize);
@@ -27,10 +28,12 @@ export const ButtonLogin = () => {
     setShowSignup(true);
     setShowLogin(false);
   };
+  const setAuth = useAuthActions();
+  const auth = useAuth();
 
   return (
     <>
-      {matchesLarge ? (
+      {auth ? undefined : matchesLarge ? (
         <Button className="btn" onClick={() => dispatch(openModal(true))}>
           ورود <small>یا</small> عضویت
         </Button>
